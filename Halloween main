@@ -1,0 +1,49 @@
+import random
+
+px = 100
+py = 500
+
+sx = 200
+sy = 100
+
+page = 0
+
+speed = random.randint(1, 10)
+
+def setup():
+    global spider
+    size(480, 640)
+    spider = loadImage("spider.jpg")
+
+
+def draw():
+    global px, py, sx, sy, page, speed
+    if frameCount % speed == 0:
+        page += 1
+        if page >= 2:
+            page = 0
+    
+    
+    if page == 0:
+        background(0)
+        
+    if page == 1:
+        background(255)
+        fill(255, 255, 0)             #pumpkin
+        ellipse(px, py, 200, 150)
+        fill(255)
+        ellipse(px-50, py-30, 30, 20)
+        ellipse(px+50, py-30, 30, 20)
+        rect(px-30, py+10, 60, 60, 60)
+        px += 5
+        if px >= 640:
+            px = 0
+    
+    
+    
+        image(spider, sx, sy, 150, 150)      #spider
+        sy += 1
+        if sy >= 200:
+            sy = 100
+        rect(sx+67, 0, 1, 220)
+        
